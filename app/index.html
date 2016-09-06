@@ -42,7 +42,7 @@
       </div>
 
       <div class="row marketing">
-        <form class="col-lg-6" autocomplete="on" id="account">
+        <form class="col-lg-6" autocomplete="on" id="account" data-bind="submit: accountSubmit">
           <h1>Account Creation</h1>
           <div class="form-group">
             <label for="name">Name
@@ -64,7 +64,7 @@
               <input class="form-control" type="password" id="password" placeholder="Password">
             </label>
           </div>
-          <p><button class="btn btn-default" form="account" id="accountsubmit">Submit</button></p>
+          <p><button class="btn btn-default" form="account" id="accountsubmit" type="submit">Submit</button></p>
         </form>
       </div>
 
