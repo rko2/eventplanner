@@ -42,8 +42,30 @@
       </div>
 
       <div class="row marketing">
-        <div class="col-lg-6">
-        </div>
+        <form class="col-lg-6" autocomplete="on" id="account">
+          <h1>Account Creation</h1>
+          <div class="form-group">
+            <label for="name">Name
+              <input class="form-control" type="text" id="name" autocomplete="name" placeholder="Full Name">
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="email">Email
+              <input class="form-control" type="email" id="name" autocomplete="email" placeholder="Email">
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="password">Password
+              <input class="form-control" type="password" id="password" placeholder="Password">
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="confirmpass">Confirm Password
+              <input class="form-control" type="password" id="password" placeholder="Password">
+            </label>
+          </div>
+          <p><button class="btn btn-default" form="account" id="accountsubmit">Submit</button></p>
+        </form>
       </div>
 
       <div class="footer">
@@ -80,6 +102,8 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <script type='text/javascript' src="/bower_components/knockout/dist/knockout.js"></script>
+
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
