@@ -38,11 +38,13 @@
       <div class="jumbotron">
         <h1>Welcome to the Event Planner!</h1>
         <p class="lead">An easy way to set up any occasion.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+        <p class="lead">Here's how far you are on your current event!</p>
+        <h3><progress id="progress" value="0" max="100"></progress></h3>
+        <p><a class="btn btn-lg btn-success" href="#">View planned events</a></p>
       </div>
 
       <div class="row marketing">
-        <form class="col-lg-12" id="account" data-bind="submit: accountSubmit">
+        <form class="col-lg-6" id="account" data-bind="submit: accountSubmit">
           <h1>Account Creation</h1>
           <div class="form-group">
             <label for="name">Name
@@ -66,6 +68,40 @@
           </div>
           <p><button class="btn btn-default" form="account" id="accountsubmit" type="submit">Submit</button></p>
         </form>
+        <form class="col-lg-6 invisible" id="event" data-bind="submit: eventSubmit">
+            <h1>What are you planning?</h1>
+            <div class="form-group">
+              <label for="eventname">Event Name
+                <input class="form-control" type="text" id="eventname" placeholder="Event Name" required>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="eventtype">Event Type
+                <input class="form-control" type="text" id="eventtype" placeholder="Event Description" required>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="eventhost">Event Host
+                <input class="form-control" type="text" id="eventhost" placeholder="Event Host" required>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="eventstart">Event Start
+                <input class="form-control" type="datetime-local" id="eventstart" required>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="eventend">Event End
+                <input class="form-control" type="datetime-local" id="eventend" required>
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="location">Location
+                <input class="form-control" type="text" id="location" required>
+              </label>
+            </div>
+            <p><button class="btn btn-default" form="event" id="eventsubmit" type="submit">Submit</button></p>
+          </form>
       </div>
 
       <div class="footer">
