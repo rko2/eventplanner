@@ -5,6 +5,16 @@ var viewModel = function () {
   var accountForm = document.getElementById('account');
   var eventForm = document.getElementById('event');
   var progressBar = document.getElementById('progress');
+  var passFirst = document.getElementById('password');
+  var passSecond = document.getElementById('confirmpass');
+  passSecond.addEventListener('input', function(e) {
+    console.log(passSecond.value);
+    if (passSecond.value != passFirst.value) {
+      passSecond.setCustomValidity("The passwords must match.");
+    } else {
+      passSecond.setCustomValidity("");
+    }
+  })
   self.accountSubmit = function() {
     progressBar.value = 50;
     accountForm.innerHTML = "<h1>Thanks!</h1>";
