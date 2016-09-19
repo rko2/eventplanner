@@ -9,6 +9,10 @@ var viewModel = function () {
   var passSecond = document.getElementById('confirmpass');
   self.eventName = ko.observable('');
   self.eventType = ko.observable('');
+  self.eventHost = ko.observable('');
+  self.eventStart = ko.observable('');
+  self.eventEnd = ko.observable('');
+  self.eventLocation = ko.observable('');
   self.eventList = ko.observableArray([]);
   passSecond.addEventListener('input', function(e) {
     console.log(passSecond.value);
@@ -28,6 +32,10 @@ var viewModel = function () {
     addEvent();
     self.eventName('');
     self.eventType('');
+    self.eventHost('');
+    self.eventStart('');
+    self.eventEnd('');
+    self.eventLocation('');
     console.log(self.eventName());
   }
 
@@ -39,6 +47,10 @@ var viewModel = function () {
   var newEvent = function() {
     this.name = self.eventName();
     this.type = self.eventType();
+    this.host = self.eventHost();
+    this.start = self.eventStart();
+    this.stop = self.eventEnd();
+    this.location = self.eventLocation();
   }
 
 }

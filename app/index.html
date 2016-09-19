@@ -82,22 +82,22 @@
             </div>
             <div class="form-group">
               <label for="eventhost">Event Host
-                <input class="form-control" type="text" id="eventhost" placeholder="Event Host" required>
+                <input class="form-control" type="text" id="eventhost" placeholder="Event Host" data-bind="value: eventHost" required>
               </label>
             </div>
             <div class="form-group">
               <label for="eventstart">Event Start
-                <input class="form-control" type="datetime-local" id="eventstart" required>
+                <input class="form-control" type="datetime-local" id="eventstart" data-bind="value: eventStart" required>
               </label>
             </div>
             <div class="form-group">
               <label for="eventend">Event End
-                <input class="form-control" type="datetime-local" id="eventend" required>
+                <input class="form-control" type="datetime-local" id="eventend" data-bind="value: eventEnd" required>
               </label>
             </div>
             <div class="form-group">
               <label for="location">Location
-                <input class="form-control" type="text" id="location" required>
+                <input class="form-control" type="text" id="location" data-bind="value: eventLocation" required>
               </label>
             </div>
             <p><button class="btn btn-default" form="event" id="eventsubmit" type="submit">Submit</button></p>
