@@ -5,8 +5,11 @@ var viewModel = function () {
   var accountForm = document.getElementById('account');
   var eventForm = document.getElementById('event');
   var progressBar = document.getElementById('progress');
+  var accountName = document.getElementById('name');
+  var accountEmail = document.getElementById('email');
   var passFirst = document.getElementById('password');
   var passSecond = document.getElementById('confirmpass');
+  var progressNote = document.getElementById('progressnote');
   self.eventName = ko.observable('');
   self.eventType = ko.observable('');
   self.eventHost = ko.observable('');
@@ -14,6 +17,15 @@ var viewModel = function () {
   self.eventEnd = ko.observable('');
   self.eventLocation = ko.observable('');
   self.eventList = ko.observableArray([]);
+  accountName.addEventListener('input', function(e) {
+    progressBar.value = 25;
+  })
+  accountEmail.addEventListener('input', function(e) {
+    progressBar.value = 50;
+  })
+  passFirst.addEventListener('input', function(e) {
+    progressBar.value = 75;
+  })
   passSecond.addEventListener('input', function(e) {
     console.log(passSecond.value);
     if (passSecond.value != passFirst.value) {
@@ -23,8 +35,9 @@ var viewModel = function () {
     }
   })
   self.accountSubmit = function() {
-    progressBar.value = 50;
-    accountForm.innerHTML = '<h1>Thanks!</h1>';
+    progressBar.value = 100;
+    accountForm.innerHTML = '<h1>Thanks for creating your account!</h1>';
+    progressNote.innerHTML = 'Your account is ready!';
     eventForm.classList.remove('invisible');
   }
   self.eventSubmit = function() {
