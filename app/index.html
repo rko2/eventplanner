@@ -103,6 +103,16 @@
             <p><button class="btn btn-default" form="event" id="eventsubmit" type="submit">Submit</button></p>
           </form>
       </div>
+      <div class="marketing" data-bind="foreach: eventList">
+        <div class="row">
+          <section class="col-lg-2" data-bind="text: name"></section>
+          <section class="col-lg-2" data-bind="text: type"></section>
+          <section class="col-lg-2" data-bind="text: host"></section>
+          <section class="col-lg-2" data-bind="text: start"></section>
+          <section class="col-lg-2" data-bind="text: stop"></section>
+          <section class="col-lg-2" data-bind="text: location"></section>
+        </div>
+      </div>
 
       <div class="footer">
         <p>♥ from the Yeoman team</p>
