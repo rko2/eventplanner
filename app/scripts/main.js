@@ -16,6 +16,8 @@ var viewModel = function () {
   self.eventStart = ko.observable('');
   self.eventEnd = ko.observable('');
   self.eventLocation = ko.observable('');
+  self.eventGuest = ko.observable('');
+  self.guestList = ko.observableArray([]);
   self.eventList = ko.observableArray([]);
   accountName.addEventListener('input', function(e) {
     progressBar.value = 25;
@@ -40,6 +42,11 @@ var viewModel = function () {
     progressNote.innerHTML = 'Your account is ready!';
     eventForm.classList.remove('invisible');
   }
+  self.addGuest = function() {
+    self.guestList.push(self.eventGuest());
+    console.log(self.guestList());
+    self.eventGuest('');
+  }
   self.eventSubmit = function() {
     console.log(self.eventName());
     addEvent();
@@ -49,6 +56,7 @@ var viewModel = function () {
     self.eventStart('');
     self.eventEnd('');
     self.eventLocation('');
+    self.guestList([]);
     console.log(self.eventName());
   }
 
@@ -64,6 +72,7 @@ var viewModel = function () {
     this.start = self.eventStart();
     this.stop = self.eventEnd();
     this.location = self.eventLocation();
+    this.guests = self.guestList();
   }
 
 }

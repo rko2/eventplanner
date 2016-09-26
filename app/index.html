@@ -44,7 +44,7 @@
       </div>
 
       <div class="row marketing">
-        <form class="col-lg-6" id="account" data-bind="submit: accountSubmit">
+        <form class="col-md-6" id="account" data-bind="submit: accountSubmit">
           <h1>Account Creation</h1>
           <div class="form-group">
             <label for="name">Name
@@ -66,9 +66,9 @@
               <input class="form-control" type="password" id="confirmpass" placeholder="Password" required>
             </label>
           </div>
-          <p><button class="btn btn-default" form="account" id="accountsubmit" type="submit">Submit</button></p>
+          <button class="btn btn-default" form="account" id="accountsubmit" type="submit">Submit</button>
         </form>
-        <form class="col-lg-6 invisible" id="event" data-bind="submit: eventSubmit">
+        <form class="col-md-6 invisible" id="event" data-bind="submit: eventSubmit">
             <h1>What are you planning?</h1>
             <div class="form-group">
               <label for="eventname">Event Name
@@ -100,17 +100,27 @@
                 <input class="form-control" type="text" id="location" data-bind="value: eventLocation" required>
               </label>
             </div>
-            <p><button class="btn btn-default" form="event" id="eventsubmit" type="submit">Submit</button></p>
+            <div class="form-group">
+              <label for="guest">Enter your guests one by one!
+                <input class="form-control" type="text" id="guest" data-bind="value: eventGuest">
+                <button class="btn btn-default" type="submit" data-bind="click: addGuest">Add this guest!</button>
+              </label>
+            </div>
+            <button class="btn btn-default" form="event" id="eventsubmit" type="submit">Submit</button>
           </form>
       </div>
-      <div class="marketing" data-bind="foreach: eventList">
+      <div class="marketing jumbotron" data-bind="foreach: eventList">
         <div class="row">
-          <section class="col-lg-2" data-bind="text: name"></section>
-          <section class="col-lg-2" data-bind="text: type"></section>
-          <section class="col-lg-2" data-bind="text: host"></section>
-          <section class="col-lg-2" data-bind="text: start"></section>
-          <section class="col-lg-2" data-bind="text: stop"></section>
-          <section class="col-lg-2" data-bind="text: location"></section>
+          <section class="col-md-2" data-bind="text: name"></section>
+          <section class="col-md-2" data-bind="text: type"></section>
+          <section class="col-md-2" data-bind="text: host"></section>
+          <section class="col-md-2" data-bind="text: start"></section>
+          <section class="col-md-2" data-bind="text: stop"></section>
+          <section class="col-md-2" data-bind="text: location"></section>
+        </div>
+        <section>Guests:
+        <div class="row" data-bind="foreach: guests">
+          <section class="col-md-1" data-bind="text: $data"></section>
         </div>
       </div>
 
