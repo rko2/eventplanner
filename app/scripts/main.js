@@ -65,7 +65,7 @@ var viewModel = function () {
       errorMessages.push('The password must contain a lowercase letter. ')
     }
     else {
-      errorMessages.push("");
+      errorMessages.push('');
     }
     if (errorMessages.length > 0) {
       error = errorMessages.join();
