@@ -38,7 +38,7 @@
       <div class="jumbotron">
         <h1>Welcome to the Event Planner!</h1>
         <p class="lead">An easy way to set up any occasion.</p>
-        <p class="lead" id="progressnote">Here's how close you are to planning events!</p>
+        <p class="lead" id="progressNote">Here's how close you are to planning events!</p>
         <h3><progress id="progress" value="0" max="100"></progress></h3>
         <p><a class="btn btn-lg btn-success" href="#">View planned events</a></p>
       </div>
@@ -48,7 +48,7 @@
           <h1>Account Creation</h1>
           <div class="form-group">
             <label for="name">Name
-              <input class="form-control" type="text" id="name" autocomplete="name" placeholder="Full Name" required>
+              <input class="form-control" type="text" id="name" autocomplete="name" placeholder="Full Name" autofocus required>
             </label>
           </div>
           <div class="form-group">
@@ -62,47 +62,47 @@
             </label>
           </div>
           <div class="form-group">
-            <label for="confirmpass">Confirm Password
-              <input class="form-control" type="password" id="confirmpass" placeholder="Password" required>
+            <label for="confirmPass">Confirm Password
+              <input class="form-control" type="password" id="confirmPass" placeholder="Password" required>
             </label>
           </div>
-          <button class="btn btn-default" form="account" id="accountsubmit" type="submit">Submit</button>
+          <button class="btn btn-default" form="account" id="accountSubmit" type="submit">Submit</button>
         </form>
         <form class="col-md-6 invisible" id="event" data-bind="submit: eventSubmit">
             <h1>What are you planning?</h1>
             <div class="form-group">
-              <label for="eventname">Event Name
-                <input class="form-control" type="text" id="eventname" placeholder="Event Name" data-bind="value: eventName" required>
+              <label for="eventName">Event Name
+                <input class="form-control" type="text" id="eventName" placeholder="Event Name" data-bind="value: eventName" required>
               </label>
             </div>
             <div class="form-group">
-              <label for="eventtype">Event Type
-                <input class="form-control" type="text" id="eventtype" placeholder="Event Description" data-bind="value: eventType" required>
+              <label for="eventType">Event Type
+                <input class="form-control" type="text" id="eventType" placeholder="Event Description" data-bind="value: eventType" required>
               </label>
             </div>
             <div class="form-group">
-              <label for="eventhost">Event Host
-                <input class="form-control" type="text" id="eventhost" placeholder="Event Host" data-bind="value: eventHost" required>
+              <label for="eventHost">Event Host
+                <input class="form-control" type="text" id="eventHost" placeholder="Event Host" data-bind="value: eventHost" required>
               </label>
             </div>
             <div class="form-group">
-              <label for="eventstart">Event Start
-                <input class="form-control" type="datetime-local" id="eventstart" data-bind="value: eventStart" required>
+              <label for="eventStart">Event Start
+                <input class="form-control" type="datetime-local" id="eventStart" data-bind="value: eventStart" required>
               </label>
             </div>
             <div class="form-group">
-              <label for="eventend">Event End
-                <input class="form-control" type="datetime-local" id="eventend" data-bind="value: eventEnd" required>
+              <label for="eventEnd">Event End
+                <input class="form-control" type="datetime-local" id="eventEnd" data-bind="value: eventEnd" required>
               </label>
             </div>
             <div class="form-group">
               <label for="location">Location
-                <input class="form-control" type="text" id="location" data-bind="value: eventLocation" required>
+                <input class="form-control" type="text" id="location" placeholder="Location" data-bind="value: eventLocation" required>
               </label>
             </div>
             <div class="form-group">
               <label for="guest">Enter your guests one by one!
-                <input class="form-control" type="text" id="guest" data-bind="value: eventGuest">
+                <input class="form-control" type="text" id="guest" placeholder="Guest Name" data-bind="value: eventGuest">
                 <button class="btn btn-default" type="submit" data-bind="click: addGuest">Add this guest!</button>
               </label>
             </div>
@@ -125,7 +125,7 @@
       </div>
 
       <div class="footer">
-        <p>♥ from the Yeoman team</p>
+        <p>Scaffolded with Yeoman</p>
       </div>
     </div>
 
