@@ -1,5 +1,3 @@
-console.log('\'Allo \'Allo!');
-
 var viewModel = function () {
   var self = this;
   var focusTimer;
