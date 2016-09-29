@@ -2,6 +2,7 @@ console.log('\'Allo \'Allo!');
 
 var viewModel = function () {
   var self = this;
+  var focusTimer;
 
   /* grab inputs */
 
@@ -13,6 +14,8 @@ var viewModel = function () {
   var passFirst = document.getElementById('password');
   var passSecond = document.getElementById('confirmPass');
   var progressNote = document.getElementById('progressNote');
+  var secondFocus = document.getElementById('eventHost');
+  var eventGuestList = document.getElementById('guest');
 
   /* create variables for use in setting custom validity */
 
@@ -34,63 +37,57 @@ var viewModel = function () {
   self.guestList = ko.observableArray([]);
   self.eventList = ko.observableArray([]);
 
-
   /* update the progress bar as the user fills out the account creation form */
 
-  accountName.addEventListener('input', function(e) {
+  accountName.addEventListener('blur', function(e) {
     if (!accountName.value) {
       accountName.setCustomValidity('Please enter a name.');
     } else {
       accountName.setCustomValidity('');
-      progressBar.value = 25;
     }
   })
-  accountEmail.addEventListener('input', function(e) {
+
+  accountEmail.addEventListener('blur', function(e) {
     if (!accountEmail.value) {
       accountEmail.setCustomValidity('Please enter an email address.');
     } else {
       accountEmail.setCustomValidity('');
-      progressBar.value = 50;
     }
   })
 
   /* continue updating the progress bar while also validating the user's password */
 
-  passFirst.addEventListener('input', function(e) {
-    progressBar.value = 75;
+  passFirst.addEventListener('blur', function(e) {
     errorMessages = [];
     if (passFirst.value.length < 10) {
-      errorMessages.push('The password must be longer than 10 characters. ');
+      errorMessages.push('The password must be longer than 10 characters ');
     }
     if (passFirst.value.length > 30) {
-      errorMessages.push('The password must be shorter than 30 characters. ');
+      errorMessages.push('The password must be shorter than 30 characters ');
     }
     if (!passFirst.value.match(/[0-9]/g)) {
-      errorMessages.push('The password must contain a number. ');
+      errorMessages.push('The password must contain a number ');
     }
     if (!passFirst.value.match(/[A-Z]/g)) {
-      errorMessages.push('The password must contain an uppercase letter. ');
+      errorMessages.push('The password must contain an uppercase letter ');
     }
     if (!passFirst.value.match(/[a-z]/g)) {
-      errorMessages.push('The password must contain a lowercase letter. ')
-    }
-    else {
+      errorMessages.push('The password must contain a lowercase letter ')
+    } else {
       errorMessages.push('');
+      passFirst.setCustomValidity('');
     }
     if (errorMessages.length > 0) {
       error = errorMessages.join();
       passFirst.setCustomValidity(error);
-    }
-    else {
-      passFirst.setCustomValidity('');
+      console.log(error);
     }
   })
 
   /* check to see if the password and confirm password fields match */
 
-  passSecond.addEventListener('input', function(e) {
+  passSecond.addEventListener('blur', function(e) {
     console.log(passSecond.value);
-    progressBar.value = 100;
     if (passSecond.value != passFirst.value) {
       passSecond.setCustomValidity('The passwords must match.');
     } else {
@@ -101,10 +98,16 @@ var viewModel = function () {
   /* complete the progress bar and replace the account creation form; also make the event creation form usable. */
 
   self.accountSubmit = function() {
-    progressBar.value = 100;
     accountForm.innerHTML = '<h1>Thanks for creating your account!</h1>';
     progressNote.innerHTML = 'Your account is ready!';
     eventForm.classList.remove('invisible');
+    focusTimer = window.setTimeout(eventFocus, 2000);
+  }
+
+  /* set autofocus on event creation form when it appears */
+
+  var eventFocus = function() {
+    secondFocus.setAttribute('autofocus', 'autofocus')
   }
 
   /* add guests to the event */
@@ -119,14 +122,18 @@ var viewModel = function () {
 
   self.eventSubmit = function() {
     console.log(self.eventName());
-    addEvent();
-    self.eventName('');
-    self.eventType('');
-    self.eventHost('');
-    self.eventStart('');
-    self.eventEnd('');
-    self.eventLocation('');
-    self.guestList([]);
+    if (self.guestList().length < 1) {
+      eventGuestList.setCustomValidity('Please enter at least one guest.');
+    } else {
+     addEvent();
+     self.eventName('');
+     self.eventType('');
+     self.eventHost('');
+     self.eventStart('');
+     self.eventEnd('');
+     self.eventLocation('');
+     self.guestList([]);
+    }
     console.log(self.eventName());
   }
 
