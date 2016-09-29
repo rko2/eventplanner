@@ -39,7 +39,7 @@ var viewModel = function () {
 
   accountName.addEventListener('input', function(e) {
     if (!accountName.value) {
-      accountName.setCustomValidity('Please enter a username.');
+      accountName.setCustomValidity('Please enter a name.');
     } else {
       accountName.setCustomValidity('');
       progressBar.value = 25;
