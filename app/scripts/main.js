@@ -38,10 +38,20 @@ var viewModel = function () {
   /* update the progress bar as the user fills out the account creation form */
 
   accountName.addEventListener('input', function(e) {
-    progressBar.value = 25;
+    if (!accountName.value) {
+      accountName.setCustomValidity('Please enter a username.');
+    } else {
+      accountName.setCustomValidity('');
+      progressBar.value = 25;
+    }
   })
   accountEmail.addEventListener('input', function(e) {
-    progressBar.value = 50;
+    if (!accountEmail.value) {
+      accountEmail.setCustomValidity('Please enter an email address.');
+    } else {
+      accountEmail.setCustomValidity('');
+      progressBar.value = 50;
+    }
   })
 
   /* continue updating the progress bar while also validating the user's password */
@@ -80,6 +90,7 @@ var viewModel = function () {
 
   passSecond.addEventListener('input', function(e) {
     console.log(passSecond.value);
+    progressBar.value = 100;
     if (passSecond.value != passFirst.value) {
       passSecond.setCustomValidity('The passwords must match.');
     } else {
