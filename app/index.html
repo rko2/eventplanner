@@ -77,7 +77,14 @@
             </div>
             <div class="form-group">
               <label for="eventType">Event Type
-                <input class="form-control" type="text" id="eventType" placeholder="Event Description" data-bind="value: eventType" required>
+                <input class="form-control" list="eventType" placeholder="Event Description" data-bind="value: eventType" required>
+                <datalist id="eventType">
+                  <option value="Sports"></option>
+                  <option value="Conference"></option>
+                  <option value="Party"></option>
+                  <option value="Convention"></option>
+                  <option value="Entertainment"></option>
+                </datalist>
               </label>
             </div>
             <div class="form-group">
@@ -103,8 +110,8 @@
             <div class="form-group">
               <label for="guest">Enter your guests one by one!
                 <input class="form-control" type="text" id="guest" placeholder="Guest Name" data-bind="value: eventGuest">
-                <button class="btn btn-default" type="submit" data-bind="click: addGuest">Add this guest!</button>
               </label>
+                <button class="btn btn-default" type="submit" data-bind="click: addGuest">Add this guest!</button>
             </div>
             <button class="btn btn-default" form="event" id="eventsubmit" type="submit">Submit</button>
           </form>
