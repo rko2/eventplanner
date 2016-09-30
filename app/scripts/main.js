@@ -1,7 +1,7 @@
 var viewModel = function () {
   var self = this;
   var focusTimer;
-  var timeStamp;
+  var beginTime, endTime, presentTime;
 
   /* grab inputs */
 
@@ -15,6 +15,7 @@ var viewModel = function () {
   var progressNote = document.getElementById('progressNote');
   var secondFocus = document.getElementById('eventHost');
   var eventGuestList = document.getElementById('guest');
+  var eventClose = document.getElementById('eventEnd');
 
   /* create variables for use in setting custom validity */
 
@@ -156,8 +157,20 @@ var viewModel = function () {
   }
 
   self.pastCheck = function() {
-    timeStamp = new Date(self.eventStart());
-    console.log(timeStamp);
+    beginTime = new Date(self.eventStart());
+    presentTime = new Date();
+    console.log(beginTime);
+    console.log(presentTime);
+  }
+
+  self.timeCompare = function() {
+    beginTime = new Date(self.eventStart());
+    endTime = new Date(self.eventEnd());
+    if (!(endTime > beginTime)) {
+      eventClose.setCustomValidity('The event has to end after the start time.');
+    } else {
+      eventClose.setCustomValidity('');
+    }
   }
 
   var addEvent = function() {
