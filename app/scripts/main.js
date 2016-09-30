@@ -158,9 +158,11 @@ var viewModel = function () {
 
   self.pastCheck = function() {
     beginTime = new Date(self.eventStart());
+    beginTime = beginTime.toISOString();
     presentTime = new Date();
+    presentTime = presentTime.toISOString();
     console.log(beginTime);
-    console.log(presentTime);
+    console.log(presentTime > beginTime);
   }
 
   self.timeCompare = function() {
