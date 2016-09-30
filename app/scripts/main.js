@@ -43,6 +43,7 @@ var viewModel = function () {
     } else {
       accountName.setCustomValidity('');
     }
+    checkProgress();
   })
 
   accountEmail.addEventListener('blur', function(e) {
@@ -51,6 +52,7 @@ var viewModel = function () {
     } else {
       accountEmail.setCustomValidity('');
     }
+    checkProgress();
   })
 
   /* continue updating the progress bar while also validating the user's password */
@@ -80,6 +82,7 @@ var viewModel = function () {
       passFirst.setCustomValidity(error);
       console.log(error);
     }
+    checkProgress();
   })
 
   /* check to see if the password and confirm password fields match */
@@ -91,6 +94,7 @@ var viewModel = function () {
     } else {
       passSecond.setCustomValidity('');
     }
+    checkProgress();
   })
 
   /* complete the progress bar and replace the account creation form; also make the event creation form usable. */
@@ -100,6 +104,21 @@ var viewModel = function () {
     progressNote.innerHTML = 'Your account is ready!';
     eventForm.classList.remove('invisible');
     focusTimer = window.setTimeout(eventFocus, 2000);
+  }
+
+  var checkProgress = function() {
+    if (accountName.value) {
+      progressBar.value = 25;
+    }
+    if (accountEmail.value) {
+      progressBar.value = 50;
+    }
+    if (passFirst.value) {
+      progressBar.value = 75;
+    }
+    if (confirmPass.value) {
+      progressBar.value = 100;
+    }
   }
 
   /* set autofocus on event creation form when it appears */
