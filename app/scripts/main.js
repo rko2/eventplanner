@@ -16,6 +16,7 @@ var viewModel = function () {
   var secondFocus = document.getElementById('eventHost');
   var eventGuestList = document.getElementById('guest');
   var eventClose = document.getElementById('eventEnd');
+  var eventOpen = document.getElementById('eventStart');
 
   /* create variables for use in setting custom validity */
 
@@ -161,6 +162,11 @@ var viewModel = function () {
     beginTime = beginTime.toISOString();
     presentTime = new Date();
     presentTime = presentTime.toISOString();
+    if (!(presentTime > beginTime)) {
+      eventOpen.setCustomValidity('The event can\'t start before the present time.' )
+    } else {
+      eventOpen.setCustomValidity('');
+    }
     console.log(beginTime);
     console.log(presentTime > beginTime);
   }
