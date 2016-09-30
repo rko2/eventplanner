@@ -1,6 +1,7 @@
 var viewModel = function () {
   var self = this;
   var focusTimer;
+  var timeStamp;
 
   /* grab inputs */
 
@@ -152,6 +153,11 @@ var viewModel = function () {
      self.guestList([]);
     }
     console.log(self.eventName());
+  }
+
+  self.pastCheck = function() {
+    timeStamp = new Date(self.eventStart());
+    console.log(timeStamp);
   }
 
   var addEvent = function() {
