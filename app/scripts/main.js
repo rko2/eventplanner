@@ -100,6 +100,15 @@ var viewModel = function () {
     checkProgress();
   })
 
+  /* disable the default validity messages, as described on HTML5Rocks */
+
+  var forms = document.getElementsByTagName('form');
+  for (var i = 0; i < forms.length; i++) {
+    forms[i].addEventListener('invalid', function(e) {
+      e.preventDefault();
+    }, true);
+  }
+
   /* complete the progress bar and replace the account creation form; also make the event creation form usable. */
 
   self.accountSubmit = function() {

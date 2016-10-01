@@ -12,3 +12,6 @@
 * Once you've submitted your account information, the event creation form will become visible.
 * In the event creation form, guests are entered one by one and stored in a list corresponding to that event.
 * When you've submitted an event, it will be displayed below, along with the corresponding guest list.
+
+## Other
+* Default validity messages were disabled using code from [this](http://www.html5rocks.com/en/tutorials/forms/constraintvalidation/) article.
