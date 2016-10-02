@@ -6,6 +6,7 @@ var viewModel = function () {
   var progressTrack;
 
   /* grab inputs */
+  /* really ugly right now, something to look back to */
 
   var accountForm = document.getElementById('account');
   var eventForm = document.getElementById('event');
@@ -25,6 +26,7 @@ var viewModel = function () {
   var eventOpen = document.getElementById('eventStart');
 
   /* create variables for use in setting custom validity */
+  /* grabbing inputs and creating elements is really ugly now, something to look at in the future */
 
   var errorMessages;
   var error;
@@ -136,7 +138,7 @@ var viewModel = function () {
     }, true);
   }
 
-  /* complete the progress bar and replace the account creation form; also make the event creation form usable. */
+  /* replace the account creation form; also make the event creation form usable. */
 
   self.accountSubmit = function() {
     accountForm.innerHTML = '<h1>Thanks for creating your account!</h1>';
@@ -200,6 +202,8 @@ var viewModel = function () {
      self.eventLocation('');
      self.guestList([]);
   }
+
+  /* real time validation to all event creation fields */
 
   self.eventNameCheck = function() {
     if (!self.eventName()) {
