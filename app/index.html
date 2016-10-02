@@ -82,12 +82,12 @@
             <h1>What are you planning?</h1>
             <div class="form-group">
               <label for="eventName">Event Name
-                <input class="form-control" type="text" id="eventName" placeholder="Event Name" data-bind="value: eventName" required>
+                <input class="form-control" type="text" id="eventName" placeholder="Event Name" data-bind="value: eventName, event: {blur: eventNameCheck}" required>
               </label>
             </div>
             <div class="form-group">
               <label for="eventType">Event Type
-                <input class="form-control" list="eventType" placeholder="Event Description" data-bind="value: eventType" required>
+                <input class="form-control" list="eventType" placeholder="Event Description" data-bind="value: eventType, event: {blur: eventTypeCheck}" required>
                 <datalist id="eventType">
                   <option value="Sports"></option>
                   <option value="Conference"></option>
@@ -99,7 +99,7 @@
             </div>
             <div class="form-group">
               <label for="eventHost">Event Host
-                <input class="form-control" type="text" id="eventHost" placeholder="Event Host" data-bind="value: eventHost" required>
+                <input class="form-control" type="text" id="eventHost" placeholder="Event Host" data-bind="value: eventHost, event: {blur: eventHostCheck}" required>
               </label>
             </div>
             <div class="form-group">
@@ -114,7 +114,7 @@
             </div>
             <div class="form-group">
               <label for="location">Location
-                <input class="form-control" type="text" id="location" placeholder="Location" data-bind="value: eventLocation" required>
+                <input class="form-control" type="text" id="location" placeholder="Location" data-bind="value: eventLocation, event: {blur: eventLocationCheck}" required>
               </label>
             </div>
             <div class="form-group">

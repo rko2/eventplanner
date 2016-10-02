@@ -16,6 +16,10 @@ var viewModel = function () {
   var passSecond = document.getElementById('confirmPass');
   var progressNote = document.getElementById('progressNote');
   var secondFocus = document.getElementById('eventHost');
+  var eventName = document.getElementById('eventName');
+  var eventType = document.getElementById('eventType');
+  var eventHost = document.getElementById('eventHost');
+  var eventLocation = document.getElementById('location')
   var eventGuestList = document.getElementById('guest');
   var eventClose = document.getElementById('eventEnd');
   var eventOpen = document.getElementById('eventStart');
@@ -36,6 +40,18 @@ var viewModel = function () {
   var passSecondValidity = document.createElement('div');
   passSecondValidity.classList.add('text-danger');
   passSecond.parentNode.insertBefore(passSecondValidity, passSecond.nextSibling);
+  var eventNameCheck = document.createElement('div');
+  eventNameCheck.classList.add('text-danger');
+  eventName.parentNode.insertBefore(eventNameCheck, eventName.nextSibling);
+  var eventTypeCheck = document.createElement('div');
+  eventTypeCheck.classList.add('text-danger');
+  eventType.parentNode.insertBefore(eventTypeCheck, eventType.nextSibling);
+  var eventHostCheck = document.createElement('div');
+  eventHostCheck.classList.add('text-danger');
+  eventHost.parentNode.insertBefore(eventHostCheck, eventHost.nextSibling);
+  var eventLocationCheck = document.createElement('div');
+  eventLocationCheck.classList.add('text-danger');
+  eventLocation.parentNode.insertBefore(eventLocationCheck, eventLocation.nextSibling);
   var eventOpenValidity = document.createElement('div');
   eventOpenValidity.classList.add('text-danger');
   eventOpen.parentNode.insertBefore(eventOpenValidity, eventOpen.nextSibling);
@@ -183,6 +199,38 @@ var viewModel = function () {
      self.eventEnd('');
      self.eventLocation('');
      self.guestList([]);
+  }
+
+  self.eventNameCheck = function() {
+    if (!self.eventName()) {
+      eventNameCheck.innerHTML = '<p id="eventNameCheck">Please enter an event name.</p>';
+    } else {
+      eventNameCheck.innerHTML ='';
+    }
+  }
+
+  self.eventTypeCheck = function() {
+    if (!self.eventType()) {
+      eventTypeCheck.innerHTML = '<p id="eventNameCheck">Please choose an event type.</p>';
+    } else {
+      eventTypeCheck.innerHTML ='';
+    }
+  }
+
+  self.eventHostCheck = function() {
+    if (!self.eventHost()) {
+      eventHostCheck.innerHTML = '<p id="eventNameCheck">Please enter the host\'s name.</p>';
+    } else {
+      eventHostCheck.innerHTML ='';
+    }
+  }
+
+  self.eventLocationCheck = function() {
+    if (!self.eventLocation()) {
+      eventLocationCheck.innerHTML = '<p id="eventLocationCheck">Please enter the location.</p>';
+    } else {
+      eventLocationCheck.innerHTML ='';
+    }
   }
 
   self.guestCheck = function() {
