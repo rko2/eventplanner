@@ -35,6 +35,12 @@ var viewModel = function () {
   var passSecondValidity = document.createElement('div');
   passSecondValidity.classList.add('text-danger');
   passSecond.parentNode.insertBefore(passSecondValidity, passSecond.nextSibling);
+  var eventOpenValidity = document.createElement('div');
+  eventOpenValidity.classList.add('text-danger');
+  eventOpen.parentNode.insertBefore(eventOpenValidity, eventOpen.nextSibling);
+  var eventCloseValidity = document.createElement('div');
+  eventCloseValidity.classList.add('text-danger');
+  eventClose.parentNode.insertBefore(eventCloseValidity, eventClose.nextSibling);
 
   /* use observables to keep track of values input in forms */
 
@@ -185,8 +191,10 @@ var viewModel = function () {
     presentTime = presentTime.toISOString();
     if (!(presentTime > beginTime)) {
       eventOpen.setCustomValidity('The event can\'t start before the present time.' )
+      eventOpenValidity.innerHTML = '<p id="eventOpenValidity"> The event can\'t start before the present time.</p>';
     } else {
       eventOpen.setCustomValidity('');
+      eventOpenValidity.innerHTML = '';
     }
   }
 
@@ -195,8 +203,10 @@ var viewModel = function () {
     endTime = new Date(self.eventEnd());
     if (!(endTime > beginTime)) {
       eventClose.setCustomValidity('The event has to end after the start time.');
+      eventCloseValidity.innerHTML = '<p id="eventCloseValidity"> The event has to end after the start time.</p>';
     } else {
       eventClose.setCustomValidity('');
+      eventCloseValidity.innerHTML = '';
     }
   }
 

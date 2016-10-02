@@ -104,12 +104,12 @@
             </div>
             <div class="form-group">
               <label for="eventStart">Event Start
-                <input class="form-control" type="datetime-local" id="eventStart" data-bind="value: eventStart, event: {blur: pastCheck}" required>
+                <input class="form-control" type="datetime-local" id="eventStart" data-bind="value: eventStart, event: {input: pastCheck}" required>
               </label>
             </div>
             <div class="form-group">
               <label for="eventEnd">Event End
-                <input class="form-control" type="datetime-local" id="eventEnd" data-bind="value: eventEnd, event: {blur: timeCompare}" required>
+                <input class="form-control" type="datetime-local" id="eventEnd" data-bind="value: eventEnd, event: {input: timeCompare}" required>
               </label>
             </div>
             <div class="form-group">
