@@ -42,6 +42,9 @@ var viewModel = function () {
   var eventCloseValidity = document.createElement('div');
   eventCloseValidity.classList.add('text-danger');
   eventClose.parentNode.insertBefore(eventCloseValidity, eventClose.nextSibling);
+  var eventGuestValidity = document.createElement('div');
+  eventGuestValidity.classList.add('text-danger');
+  eventGuestList.parentNode.insertBefore(eventGuestValidity, eventGuestList.nextSibling);
 
   /* use observables to keep track of values input in forms */
 
@@ -75,19 +78,19 @@ var viewModel = function () {
   self.passFirstCheck = function() {
     errorMessages = [];
     if (passFirst.value.length < 10) {
-      errorMessages.push('The password must be longer than 10 characters. ');
+      errorMessages.push('The password must be longer than 10 characters');
     }
     if (passFirst.value.length > 30) {
-      errorMessages.push('The password must be shorter than 30 characters. ');
+      errorMessages.push('The password must be shorter than 30 characters');
     }
     if (!passFirst.value.match(/[0-9]/g)) {
-      errorMessages.push('The password must contain a number. ');
+      errorMessages.push('The password must contain a number');
     }
     if (!passFirst.value.match(/[A-Z]/g)) {
-      errorMessages.push('The password must contain an uppercase letter. ');
+      errorMessages.push('The password must contain an uppercase letter');
     }
     if (!passFirst.value.match(/[a-z]/g)) {
-      errorMessages.push('The password must contain a lowercase letter. ')
+      errorMessages.push('The password must contain a lowercase letter')
     } else {
       errorMessages.push('');
       passFirst.setCustomValidity('');
@@ -141,6 +144,8 @@ var viewModel = function () {
     }
   }
 
+  /* keep track of progress based on number of inputs validated */
+
   self.checkProgress = function() {
     progressTrack = [];
     if (accountName.value) {
@@ -185,9 +190,6 @@ var viewModel = function () {
   /* submit the current event in the form, and clear all form fields */
 
   self.eventSubmit = function() {
-    if (self.guestList().length < 1) {
-      eventGuestList.setCustomValidity('Please enter at least one guest.');
-    } else {
      addEvent();
      self.eventName('');
      self.eventType('');
@@ -196,6 +198,15 @@ var viewModel = function () {
      self.eventEnd('');
      self.eventLocation('');
      self.guestList([]);
+  }
+
+  self.guestCheck = function() {
+    if (self.guestList().length < 1) {
+      eventGuestList.setCustomValidity('Please enter at least one guest.');
+      eventGuestValidity.innerHTML = '<p id="eventGuestValidity">Please enter at least one guest</p>';
+    } else {
+      eventGuestList.setCustomValidity('');
+      eventGuestValidity.innerHTML = '';
     }
   }
 
