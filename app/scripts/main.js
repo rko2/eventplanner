@@ -2,6 +2,7 @@ var viewModel = function () {
   var self = this;
   var focusTimer;
   var beginTime, endTime, presentTime;
+  var forms = document.getElementsByTagName('form');
 
   /* grab inputs */
 
@@ -102,7 +103,6 @@ var viewModel = function () {
 
   /* disable the default validity messages, as described on HTML5Rocks */
 
-  var forms = document.getElementsByTagName('form');
   for (var i = 0; i < forms.length; i++) {
     forms[i].addEventListener('invalid', function(e) {
       e.preventDefault();
