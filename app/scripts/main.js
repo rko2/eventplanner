@@ -23,6 +23,18 @@ var viewModel = function () {
 
   var errorMessages;
   var error;
+  var accountNameValidity = document.createElement('div');
+  accountNameValidity.classList.add('text-danger');
+  accountName.parentNode.insertBefore(accountNameValidity, accountName.nextSibling);
+  var accountEmailValidity = document.createElement('div');
+  accountEmailValidity.classList.add('text-danger');
+  accountEmail.parentNode.insertBefore(accountEmailValidity, accountEmail.nextSibling);
+  var passFirstValidity = document.createElement('div');
+  passFirstValidity.classList.add('text-danger');
+  passFirst.parentNode.insertBefore(passFirstValidity, passFirst.nextSibling);
+  var passSecondValidity = document.createElement('div');
+  passSecondValidity.classList.add('text-danger');
+  passSecond.parentNode.insertBefore(passSecondValidity, passSecond.nextSibling);
 
   /* use observables to keep track of values input in forms */
 
@@ -41,48 +53,51 @@ var viewModel = function () {
 
   /* update the progress bar as the user fills out the account creation form */
 
-  accountName.addEventListener('blur', function(e) {
-    if (!accountName.value) {
-      accountName.setCustomValidity('Please enter a name.');
-    } else {
-      accountName.setCustomValidity('');
-    }
+  accountName.addEventListener('blur', function() {
     checkProgress();
   })
 
-  accountEmail.addEventListener('blur', function(e) {
-    if (!accountEmail.value) {
-      accountEmail.setCustomValidity('Please enter an email address.');
+  accountName.addEventListener('input', function() {
+    if (!accountName.value) {
+      accountNameValidity.innerHTML = '<p id="accountNameValidity">Please enter a name.</p>';
     } else {
-      accountEmail.setCustomValidity('');
+      accountNameValidity.innerHTML = '';
     }
+  })
+
+  accountEmail.addEventListener('blur', function() {
     checkProgress();
+  })
+
+  accountEmail.addEventListener('input', function() {
+    accountEmailValidity.innerHTML = '<p id="accountEmailValidity">' + accountEmail.validationMessage + '</p>';
   })
 
   /* continue updating the progress bar while also validating the user's password */
 
-  passFirst.addEventListener('blur', function(e) {
+  passFirst.addEventListener('input', function(e) {
     errorMessages = [];
     if (passFirst.value.length < 10) {
-      errorMessages.push('The password must be longer than 10 characters ');
+      errorMessages.push('The password must be longer than 10 characters. ');
     }
     if (passFirst.value.length > 30) {
-      errorMessages.push('The password must be shorter than 30 characters ');
+      errorMessages.push('The password must be shorter than 30 characters. ');
     }
     if (!passFirst.value.match(/[0-9]/g)) {
-      errorMessages.push('The password must contain a number ');
+      errorMessages.push('The password must contain a number. ');
     }
     if (!passFirst.value.match(/[A-Z]/g)) {
-      errorMessages.push('The password must contain an uppercase letter ');
+      errorMessages.push('The password must contain an uppercase letter. ');
     }
     if (!passFirst.value.match(/[a-z]/g)) {
-      errorMessages.push('The password must contain a lowercase letter ')
+      errorMessages.push('The password must contain a lowercase letter. ')
     } else {
       errorMessages.push('');
       passFirst.setCustomValidity('');
     }
     if (errorMessages.length > 0) {
       error = errorMessages.join();
+      passFirstValidity.innerHTML = '<p id=passFirstValidity>' + error + '</p>';
       passFirst.setCustomValidity(error);
     }
     checkProgress();
@@ -90,11 +105,13 @@ var viewModel = function () {
 
   /* check to see if the password and confirm password fields match */
 
-  passSecond.addEventListener('blur', function(e) {
+  passSecond.addEventListener('input', function(e) {
     if (passSecond.value != passFirst.value) {
       passSecond.setCustomValidity('The passwords must match.');
+      passSecondValidity.innerHTML = '<p id=passSecondValidity>The passwords must match</p>';
     } else {
       passSecond.setCustomValidity('');
+      passSecondValidity.innerHTML = '';
     }
     checkProgress();
   })
