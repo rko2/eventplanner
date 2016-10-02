@@ -16,7 +16,6 @@ var viewModel = function () {
   var passFirst = document.getElementById('password');
   var passSecond = document.getElementById('confirmPass');
   var progressNote = document.getElementById('progressNote');
-  var secondFocus = document.getElementById('eventName');
   var eventName = document.getElementById('eventName');
   var eventType = document.getElementById('eventType');
   var eventHost = document.getElementById('eventHost');
@@ -180,7 +179,7 @@ var viewModel = function () {
   /* set autofocus on event creation form when it appears */
 
   var eventFocus = function() {
-    secondFocus.focus();
+    eventName.focus();
   }
 
   /* add guests to the event */
