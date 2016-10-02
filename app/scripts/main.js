@@ -129,21 +129,6 @@ var viewModel = function () {
     focusTimer = window.setTimeout(eventFocus, 2000);
   }
 
-  var checkProgress = function() {
-    if (accountName.value) {
-      progressBar.value = 25;
-    }
-    if (accountEmail.value) {
-      progressBar.value = 50;
-    }
-    if (passFirst.value) {
-      progressBar.value = 75;
-    }
-    if (confirmPass.value) {
-      progressBar.value = 100;
-    }
-  }
-
   /* keep track of progress based on number of inputs validated */
 
   self.checkProgress = function() {
