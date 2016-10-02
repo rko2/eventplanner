@@ -119,9 +119,9 @@
             </div>
             <div class="form-group">
               <label for="guest">Enter your guests one by one!
-                <input class="form-control" type="text" id="guest" placeholder="Guest Name" data-bind="value: eventGuest">
+                <input class="form-control" type="text" id="guest" placeholder="Guest Name" data-bind="value: eventGuest, event: {blur: guestCheck}">
               </label>
-                <button class="btn btn-default" type="submit" data-bind="click: addGuest, event: {blur: guestCheck}">Add this guest!</button>
+                <button class="btn btn-default" type="submit" data-bind="click: addGuest">Add this guest!</button>
             </div>
             <button class="btn btn-default" form="event" id="eventsubmit" type="submit">Submit</button>
           </form>
