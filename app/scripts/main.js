@@ -3,6 +3,7 @@ var viewModel = function () {
   var focusTimer;
   var beginTime, endTime, presentTime;
   var forms = document.getElementsByTagName('form');
+  var progressTrack;
 
   /* grab inputs */
 
@@ -57,31 +58,21 @@ var viewModel = function () {
   self.guestList = ko.observableArray([]);
   self.eventList = ko.observableArray([]);
 
-  /* update the progress bar as the user fills out the account creation form */
+  /* validate the user's account information */
 
-  accountName.addEventListener('blur', function() {
-    checkProgress();
-  })
-
-  accountName.addEventListener('input', function() {
+  self.accountNameCheck = function() {
     if (!accountName.value) {
       accountNameValidity.innerHTML = '<p id="accountNameValidity">Please enter a name.</p>';
     } else {
       accountNameValidity.innerHTML = '';
     }
-  })
+  }
 
-  accountEmail.addEventListener('blur', function() {
-    checkProgress();
-  })
-
-  accountEmail.addEventListener('input', function() {
+  self.accountEmailCheck = function() {
     accountEmailValidity.innerHTML = '<p id="accountEmailValidity">' + accountEmail.validationMessage + '</p>';
-  })
+  }
 
-  /* continue updating the progress bar while also validating the user's password */
-
-  passFirst.addEventListener('input', function(e) {
+  self.passFirstCheck = function() {
     errorMessages = [];
     if (passFirst.value.length < 10) {
       errorMessages.push('The password must be longer than 10 characters. ');
@@ -106,12 +97,9 @@ var viewModel = function () {
       passFirstValidity.innerHTML = '<p id=passFirstValidity>' + error + '</p>';
       passFirst.setCustomValidity(error);
     }
-    checkProgress();
-  })
+  }
 
-  /* check to see if the password and confirm password fields match */
-
-  passSecond.addEventListener('input', function(e) {
+  self.passSecondCheck = function() {
     if (passSecond.value != passFirst.value) {
       passSecond.setCustomValidity('The passwords must match.');
       passSecondValidity.innerHTML = '<p id=passSecondValidity>The passwords must match</p>';
@@ -119,8 +107,7 @@ var viewModel = function () {
       passSecond.setCustomValidity('');
       passSecondValidity.innerHTML = '';
     }
-    checkProgress();
-  })
+  }
 
   /* disable the default validity messages, as described on HTML5Rocks */
 
