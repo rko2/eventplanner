@@ -141,6 +141,34 @@ var viewModel = function () {
     }
   }
 
+  self.checkProgress = function() {
+    progressTrack = [];
+    if (accountName.value) {
+      progressTrack.push('0');
+    }
+    if (accountEmail.value) {
+      progressTrack.push('1');
+    }
+    if (passFirst.value) {
+      progressTrack.push('2');
+    }
+    if (confirmPass.value) {
+      progressTrack.push('3');
+    }
+    if (progressTrack.length > 0) {
+      progressBar.value = 25;
+    }
+    if (progressTrack.length > 1) {
+      progressBar.value = 50
+    }
+    if (progressTrack.length > 2) {
+      progressBar.value = 75;
+    }
+    if (progressTrack.length > 3) {
+      progressBar.value = 100;
+    }
+  }
+
   /* set autofocus on event creation form when it appears */
 
   var eventFocus = function() {
