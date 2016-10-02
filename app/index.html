@@ -104,12 +104,12 @@
             </div>
             <div class="form-group">
               <label for="eventStart">Event Start
-                <input class="form-control" type="datetime-local" id="eventStart" data-bind="value: eventStart, event: {input: pastCheck}" required>
+                <input class="form-control" type="datetime-local" id="eventStart" data-bind="value: eventStart, event: {blur: pastCheck}" required>
               </label>
             </div>
             <div class="form-group">
               <label for="eventEnd">Event End
-                <input class="form-control" type="datetime-local" id="eventEnd" data-bind="value: eventEnd, event: {input: timeCompare}" required>
+                <input class="form-control" type="datetime-local" id="eventEnd" data-bind="value: eventEnd, event: {blur: timeCompare}" required>
               </label>
             </div>
             <div class="form-group">
@@ -121,7 +121,7 @@
               <label for="guest">Enter your guests one by one!
                 <input class="form-control" type="text" id="guest" placeholder="Guest Name" data-bind="value: eventGuest">
               </label>
-                <button class="btn btn-default" type="submit" data-bind="click: addGuest">Add this guest!</button>
+                <button class="btn btn-default" type="submit" data-bind="click: addGuest, event: {blur: guestCheck}">Add this guest!</button>
             </div>
             <button class="btn btn-default" form="event" id="eventsubmit" type="submit">Submit</button>
           </form>
