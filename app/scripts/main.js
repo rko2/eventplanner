@@ -146,13 +146,13 @@ var viewModel = function () {
     if (accountName.value) {
       progressTrack.push('0');
     }
-    if (accountEmail.value) {
+    if (accountEmail.value && accountEmail.checkValidity()) {
       progressTrack.push('1');
     }
-    if (passFirst.value) {
+    if (passFirst.value && passFirst.checkValidity()) {
       progressTrack.push('2');
     }
-    if (confirmPass.value) {
+    if (confirmPass.value && confirmPass.checkValidity()) {
       progressTrack.push('3');
     }
     if (progressTrack.length > 0) {
