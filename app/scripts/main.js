@@ -84,7 +84,6 @@ var viewModel = function () {
     if (errorMessages.length > 0) {
       error = errorMessages.join();
       passFirst.setCustomValidity(error);
-      console.log(error);
     }
     checkProgress();
   })
@@ -92,7 +91,6 @@ var viewModel = function () {
   /* check to see if the password and confirm password fields match */
 
   passSecond.addEventListener('blur', function(e) {
-    console.log(passSecond.value);
     if (passSecond.value != passFirst.value) {
       passSecond.setCustomValidity('The passwords must match.');
     } else {
@@ -143,14 +141,12 @@ var viewModel = function () {
 
   self.addGuest = function() {
     self.guestList.push(self.eventGuest());
-    console.log(self.guestList());
     self.eventGuest('');
   }
 
   /* submit the current event in the form, and clear all form fields */
 
   self.eventSubmit = function() {
-    console.log(self.eventName());
     if (self.guestList().length < 1) {
       eventGuestList.setCustomValidity('Please enter at least one guest.');
     } else {
@@ -163,7 +159,6 @@ var viewModel = function () {
      self.eventLocation('');
      self.guestList([]);
     }
-    console.log(self.eventName());
   }
 
   self.pastCheck = function() {
@@ -176,8 +171,6 @@ var viewModel = function () {
     } else {
       eventOpen.setCustomValidity('');
     }
-    console.log(beginTime);
-    console.log(presentTime > beginTime);
   }
 
   self.timeCompare = function() {
@@ -192,7 +185,6 @@ var viewModel = function () {
 
   var addEvent = function() {
     self.eventList.push(new newEvent());
-    console.log(self.eventList());
   }
 
   /* this is the event object that is created whenever the user triggers the eventSubmit function by submitting the form */
