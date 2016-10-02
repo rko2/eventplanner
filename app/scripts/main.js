@@ -252,7 +252,7 @@ var viewModel = function () {
     beginTime = beginTime.toISOString();
     presentTime = new Date();
     presentTime = presentTime.toISOString();
-    if (!(presentTime > beginTime)) {
+    if (!(presentTime < beginTime)) {
       eventOpen.setCustomValidity('The event can\'t start before the present time.' )
       eventOpenValidity.innerHTML = '<p id="eventOpenValidity"> The event can\'t start before the present time.</p>';
     } else {
