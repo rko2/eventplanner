@@ -86,8 +86,9 @@
               </label>
             </div>
             <div class="form-group">
-              <label for="eventType">Event Type
-                <input class="form-control" list="eventType" placeholder="Event Description" data-bind="value: eventType, event: {blur: eventTypeCheck}" required>
+              <label>Event Type
+                <input class="form-control" list="eventType" name="types" placeholder="Event Description" data-bind="value: eventType, event: {blur: eventTypeCheck}" required>
+              </label>
                 <datalist id="eventType">
                   <option value="Sports"></option>
                   <option value="Conference"></option>
@@ -95,7 +96,6 @@
                   <option value="Convention"></option>
                   <option value="Show"></option>
                 </datalist>
-              </label>
             </div>
             <div class="form-group">
               <label for="eventHost">Event Host
