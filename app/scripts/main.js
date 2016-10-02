@@ -16,7 +16,7 @@ var viewModel = function () {
   var passFirst = document.getElementById('password');
   var passSecond = document.getElementById('confirmPass');
   var progressNote = document.getElementById('progressNote');
-  var secondFocus = document.getElementById('eventHost');
+  var secondFocus = document.getElementById('eventName');
   var eventName = document.getElementById('eventName');
   var eventType = document.getElementById('eventType');
   var eventHost = document.getElementById('eventHost');
@@ -144,7 +144,7 @@ var viewModel = function () {
     accountForm.innerHTML = '<h1>Thanks for creating your account!</h1>';
     progressNote.innerHTML = 'Your account is ready!';
     eventForm.classList.remove('invisible');
-    focusTimer = window.setTimeout(eventFocus, 2000);
+    focusTimer = window.setTimeout(eventFocus, 50);
   }
 
   /* keep track of progress based on number of inputs validated */
@@ -180,7 +180,7 @@ var viewModel = function () {
   /* set autofocus on event creation form when it appears */
 
   var eventFocus = function() {
-    secondFocus.setAttribute('autofocus', 'autofocus')
+    secondFocus.focus();
   }
 
   /* add guests to the event */
