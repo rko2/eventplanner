@@ -237,7 +237,7 @@ var viewModel = function () {
   }
 
   self.guestCheck = function() {
-    if (self.guestList().length < 1) {
+    if (self.guestList().length < 1 && !(self.eventGuest())) {
       eventGuestList.setCustomValidity('Please enter at least one guest.');
       eventGuestValidity.innerHTML = '<p id="eventGuestValidity">Please enter at least one guest</p>';
     } else {
