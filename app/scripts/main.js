@@ -1,7 +1,7 @@
 var viewModel = function () {
   var self = this;
   var focusTimer;
-  var beginTime, endTime, presentTime;
+  var beginTime, endTime, presentTime, timeOffset;
   var forms = document.getElementsByTagName('form');
   var progressTrack;
 
@@ -248,10 +248,17 @@ var viewModel = function () {
 
   self.pastCheck = function() {
     beginTime = new Date(self.eventStart());
-    beginTime = beginTime.toISOString();
+    timeOffset = beginTime.getTimezoneOffset();
+    console.log(timeOffset);
+    console.log(beginTime.getTime());
+    console.log(beginTime.getTime() + timeOffset * 60000);
+    beginTime = beginTime.getTime() + timeOffset * 60000;
+    /* beginTime = beginTime.toISOString(); */
+    console.log(beginTime);
     presentTime = new Date();
-    presentTime = presentTime.toISOString();
-    if (!(presentTime < beginTime)) {
+    console.log(presentTime);
+    console.log(presentTime.getTime() < beginTime);
+    if (!(presentTime.getTime() < beginTime)) {
       eventOpen.setCustomValidity('The event can\'t start before the present time.' )
       eventOpenValidity.innerHTML = '<p id="eventOpenValidity"> The event can\'t start before the present time.</p>';
     } else {
